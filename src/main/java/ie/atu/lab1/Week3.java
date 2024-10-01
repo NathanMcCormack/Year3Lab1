@@ -21,4 +21,31 @@ public class Week3 {
         return "Hello "+name;
     }
 
+    @GetMapping("/calculate")
+    public String calculation(@RequestParam int num1, @RequestParam int num2,@RequestParam String operation) {
+
+        switch(operation){
+
+            case "add":
+                return "Operation: "+operation+" total: "+ (num1 +num2);
+
+            case "subtract":
+                return "Operation: "+operation+" total: "+ (num1-num2);
+
+            case "multiply":
+                return "Operation: "+operation+" total: "+ (num1*num2);
+
+            case "divide":
+                if (num2==0){
+                    return "Error, can't divide by 0";
+                }
+
+                    return "Operation: " + operation + " total: " + (num1 / num2);
+
+            default:
+                return"Error";
+        }
+    }
+
+
 }
